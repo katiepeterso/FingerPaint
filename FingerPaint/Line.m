@@ -10,4 +10,13 @@
 
 @implementation Line
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.linePoints = [NSMutableArray new];
+    }
+    return self;
+}
+
 @end

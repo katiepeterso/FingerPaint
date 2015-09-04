@@ -7,11 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "DrawingView.h"
 #import "Line.h"
 
 @interface ViewController ()
 
-@property (strong, nonatomic) IBOutlet UIView *drawingView;
+@property (strong, nonatomic) IBOutlet DrawingView *drawingView;
 @property (strong, nonatomic) Line *currentLine;
 
 @end
@@ -31,22 +32,24 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     self.currentLine = [Line new];
     UITouch* touch = [touches anyObject];
-    self.currentLine.startingPoint = [touch locationInView:self.drawingView];
+//    self.currentLine.startingPoint = [touch locationInView:self.drawingView];
+    
+    [self.drawingView.drawingPath moveToPoint:[touch locationInView:self.drawingView]];
+    [self.drawingView setNeedsDisplay];
+
     
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
-    [self.currentLine.linePoints addObject:[NSValue valueWithCGPoint:[touch locationInView:self.drawingView]]];
+//    [self.currentLine.linePoints addObject:[NSValue valueWithCGPoint:[touch locationInView:self.drawingView]]];
+    
+    [self.drawingView.drawingPath addLineToPoint:[touch locationInView:self.drawingView]];
+
+    
+    [self.drawingView setNeedsDisplay];
 }
-//     
-//-(void)drawRect:(CGRect)rect {
-//    UIBezierPath *newDrawing = [UIBezierPath new];
-//    newDrawing.lineWidth = 10;
-//    [newDrawing moveToPoint:self.previousTouchPoint];
-//    [newDrawing addLineToPoint:CGPointMake(rect.x, rect.y)
-//    [[UIColor purpleColor]setStroke];
-//    [newDrawing stroke];
-//}
+     
+
 
 @end

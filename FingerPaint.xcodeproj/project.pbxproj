@@ -15,6 +15,7 @@
 		AA02350D1B9A313A00AEA737 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA02350B1B9A313A00AEA737 /* LaunchScreen.xib */; };
 		AA0235191B9A313A00AEA737 /* FingerPaintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0235181B9A313A00AEA737 /* FingerPaintTests.m */; };
 		AA0235241B9A42EF00AEA737 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0235231B9A42EF00AEA737 /* Line.m */; };
+		AA0235271B9A563700AEA737 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0235261B9A563700AEA737 /* DrawingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		AA0235181B9A313A00AEA737 /* FingerPaintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FingerPaintTests.m; sourceTree = "<group>"; };
 		AA0235221B9A42EF00AEA737 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		AA0235231B9A42EF00AEA737 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		AA0235251B9A563700AEA737 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView.h; path = ../DrawingView.h; sourceTree = "<group>"; };
+		AA0235261B9A563700AEA737 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingView.m; path = ../DrawingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				AA0235011B9A313900AEA737 /* AppDelegate.m */,
 				AA0235031B9A313900AEA737 /* ViewController.h */,
 				AA0235041B9A313900AEA737 /* ViewController.m */,
+				AA0235251B9A563700AEA737 /* DrawingView.h */,
+				AA0235261B9A563700AEA737 /* DrawingView.m */,
 				AA0235221B9A42EF00AEA737 /* Line.h */,
 				AA0235231B9A42EF00AEA737 /* Line.m */,
 				AA0235061B9A313900AEA737 /* Main.storyboard */,
@@ -227,6 +232,7 @@
 				AA0235051B9A313900AEA737 /* ViewController.m in Sources */,
 				AA0235241B9A42EF00AEA737 /* Line.m in Sources */,
 				AA0235021B9A313900AEA737 /* AppDelegate.m in Sources */,
+				AA0235271B9A563700AEA737 /* DrawingView.m in Sources */,
 				AA0234FF1B9A313900AEA737 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
