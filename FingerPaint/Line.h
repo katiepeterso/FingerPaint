@@ -11,5 +11,6 @@
 @interface Line : NSObject
 
 @property (nonatomic, strong) NSMutableArray *linePoints;
+@property (nonatomic) CGPoint startPoint;
 
 @end

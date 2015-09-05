@@ -12,8 +12,6 @@
 
 @interface DrawingView ()
 
-@property (nonatomic) ViewController *touchController;
-
 @end
 
 @implementation DrawingView
@@ -31,29 +29,41 @@
     self = [super init];
     if (self) {
         self.drawingPath = [UIBezierPath bezierPath];
+        self.drawLine = [Line new];
     }
     return self;
 }
 
 - (void)awakeFromNib {
     self.drawingPath = [UIBezierPath bezierPath];
-    
+    self.drawLine = [Line new];
+
 }
 
 -(void)drawRect:(CGRect)rect {
-    //smoothing:
-    [self.drawingPath moveToPoint:self.currentLine.startingPoint];
     
-    Line *line = [self.delegate lineToDraw];
-    
-    for (NSValue *linePoint in self.currentLine.linePoints) {
-        CGPoint CGLinePoint = linePoint.CGPointValue;
-        [newDrawing addLineToPoint:CGLinePoint];
-    }
-
-    
+    [self.delegate passLineData];
+    [self.drawingPath moveToPoint:self.drawLine.startPoint];
     self.drawingPath.lineWidth = 10;
     [[UIColor purpleColor]setStroke];
+    
+    //smoothing:
+    if (self.drawLine.linePoints.count >= 4) {
+        for (int i = 1; i <= self.drawLine.linePoints.count; i++) {
+            NSValue *start = [self.drawLine.linePoints objectAtIndex:3*i];
+            CGPoint CGStart = start.CGPointValue;
+            NSValue *CP1 = [self.drawLine.linePoints objectAtIndex:((3*i) - 2)];
+            CGPoint CGCP1 = CP1.CGPointValue;
+            NSValue *CP2 = [self.drawLine.linePoints objectAtIndex:((3*i) - 1)];
+            CGPoint CGCP2 = CP2.CGPointValue;
+            
+            [self.drawingPath addCurveToPoint:CGStart controlPoint1:CGCP1 controlPoint2:CGCP2];
+            [self.drawingPath stroke];
+            [self.drawingPath moveToPoint: CGStart];
+            
+        }
+    }
+    
     [self.drawingPath stroke];
     
     
@@ -61,8 +71,3 @@
 }
 
 @end
-
-UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-[bezierPath moveToPoint: CGPointMake(77.5, 36.5)];
-[bezierPath addCurveToPoint: CGPointMake(101.5, 72.5) controlPoint1: CGPointMake(67.78, 56.83) controlPoint2: CGPointMake(75.76, 76.01)];
-[bezierPath addCurveToPoint: CGPointMake(157.5, 66.5) controlPoint1: CGPointMake(127.24, 68.99) controlPoint2: CGPointMake(127.69, 97.13)];
