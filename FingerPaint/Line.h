@@ -11,9 +11,5 @@
 @interface Line : NSObject
 
 @property (nonatomic, strong) NSMutableArray *linePoints;
-@property (nonatomic, strong) NSMutableArray *startPoints;
-@property (nonatomic, strong) NSMutableArray *curveToPoints;
-@property (nonatomic, strong) NSMutableArray *controlPoints1;
-@property (nonatomic, strong) NSMutableArray *controlPoints2;
 
 @end

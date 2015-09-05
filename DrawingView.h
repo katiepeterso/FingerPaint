@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class Line;
 
+@protocol DrawingDelegate <NSObject>
 
+-(void)passLineData;
+
+@end
 
 @interface DrawingView : UIView
 
 @property (nonatomic,strong) UIBezierPath *drawingPath;
+@property (nonatomic, strong) Line *drawLine;
+@property (nonatomic, weak) id <DrawingDelegate> delegate;
 
 @end

@@ -40,31 +40,29 @@
     
 }
 
-//-(void)drawRect:(CGRect)rect {
-//    //smoothing:
-//    [self.drawingPath moveToPoint:self.currentLine.startingPoint];
-//    
-//    Line *line = [self.delegate lineToDraw];
-//    
-//    for (NSValue *linePoint in self.currentLine.linePoints) {
-//        CGPoint CGLinePoint = linePoint.CGPointValue;
-//        [newDrawing addLineToPoint:CGLinePoint];
-//    }
-//
-//    
-//    self.drawingPath.lineWidth = 10;
-//    [[UIColor purpleColor]setStroke];
-//    [self.drawingPath stroke];
-//    
-//    
-//    
-//}
-//
-//@end
-//
-//UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-//[bezierPath moveToPoint: CGPointMake(77.5, 36.5)];
-//[bezierPath addCurveToPoint: CGPointMake(101.5, 72.5) controlPoint1: CGPointMake(67.78, 56.83) controlPoint2: CGPointMake(75.76, 76.01)];
-//[bezierPath addCurveToPoint: CGPointMake(157.5, 66.5) controlPoint1: CGPointMake(127.24, 68.99) controlPoint2: CGPointMake(127.69, 97.13)];
+-(void)drawRect:(CGRect)rect {
+    //smoothing:
+    [self.drawingPath moveToPoint:self.currentLine.startingPoint];
+    
+    Line *line = [self.delegate lineToDraw];
+    
+    for (NSValue *linePoint in self.currentLine.linePoints) {
+        CGPoint CGLinePoint = linePoint.CGPointValue;
+        [newDrawing addLineToPoint:CGLinePoint];
+    }
+
+    
+    self.drawingPath.lineWidth = 10;
+    [[UIColor purpleColor]setStroke];
+    [self.drawingPath stroke];
+    
+    
+    
+}
 
 @end
+
+UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+[bezierPath moveToPoint: CGPointMake(77.5, 36.5)];
+[bezierPath addCurveToPoint: CGPointMake(101.5, 72.5) controlPoint1: CGPointMake(67.78, 56.83) controlPoint2: CGPointMake(75.76, 76.01)];
+[bezierPath addCurveToPoint: CGPointMake(157.5, 66.5) controlPoint1: CGPointMake(127.24, 68.99) controlPoint2: CGPointMake(127.69, 97.13)];

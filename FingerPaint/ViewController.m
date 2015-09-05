@@ -32,7 +32,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     self.currentLine = [Line new];
     UITouch* touch = [touches anyObject];
-    [self.currentLine.startPoints addObject:[NSValue valueWithCGPoint:[touch locationInView:self.drawingView]]];
+    [self.currentLine.linePoints addObject:[NSValue valueWithCGPoint:[touch locationInView:self.drawingView]]];
     
 //    touch point storage for use without smoothing:
 //    [self.drawingView.drawingPath moveToPoint:[touch locationInView:self.drawingView]];
@@ -48,28 +48,12 @@
 //    touch point storage for use without smoothing:
 //    [self.drawingView.drawingPath addLineToPoint:[touch locationInView:self.drawingView]];
 
-    [self prepareArraysForSmoothing];
     
-//    [self.drawingView setNeedsDisplay];
+    [self.drawingView setNeedsDisplay];
 }
 
--(void)prepareArraysForSmoothing {
-    NSUInteger lastIndex = self.currentLine.linePoints.count - 1;
-    if (lastIndex % 4 == 3) {
-        [self.currentLine.startPoints addObject:[self.currentLine.linePoints lastObject]];
-    }
-    else if (lastIndex % 4 == 2) {
-        [self.currentLine.curveToPoints addObject:[self.currentLine.linePoints lastObject]];
-    }
-    else if (lastIndex % 4 == 1) {
-        [self.currentLine.controlPoints2 addObject:[self.currentLine.linePoints lastObject]];
-    }
-    else {
-        [self.currentLine.controlPoints1 addObject:[self.currentLine.linePoints lastObject]];
-    }
-
+-(void)passLineData {
+    self.drawingView.drawLine = self.currentLine;
 }
-     
-
 
 @end
