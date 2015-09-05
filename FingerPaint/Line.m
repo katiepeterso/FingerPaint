@@ -15,6 +15,10 @@
     self = [super init];
     if (self) {
         self.linePoints = [NSMutableArray new];
+        self.startPoints = [NSMutableArray new];
+        self.curveToPoints = [NSMutableArray new];
+        self.controlPoints1 = [NSMutableArray new];
+        self.controlPoints2 = [NSMutableArray new];
     }
     return self;
 }

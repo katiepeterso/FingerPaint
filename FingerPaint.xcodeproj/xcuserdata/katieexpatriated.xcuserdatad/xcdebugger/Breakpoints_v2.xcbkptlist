@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DrawingView.m"
-            timestampString = "463101103.015934"
+            filePath = "FingerPaint/ViewController.m"
+            timestampString = "463106110.459567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-drawRect:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-prepareArraysForSmoothing"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
