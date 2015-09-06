@@ -46,10 +46,11 @@
     [self.drawingPath moveToPoint:self.drawLine.startPoint];
     self.drawingPath.lineWidth = 10;
     [[UIColor purpleColor]setStroke];
+    [self.drawingPath setLineCapStyle:kCGLineCapRound];
     
     //smoothing:
     if (self.drawLine.linePoints.count >= 4) {
-        for (int i = 1; i <= self.drawLine.linePoints.count; i++) {
+        for (int i = 1; 3*i < self.drawLine.linePoints.count; i++) {
             NSValue *start = [self.drawLine.linePoints objectAtIndex:3*i];
             CGPoint CGStart = start.CGPointValue;
             NSValue *CP1 = [self.drawLine.linePoints objectAtIndex:((3*i) - 2)];
