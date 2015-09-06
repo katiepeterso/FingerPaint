@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *linePoints;
 @property (nonatomic) CGPoint startPoint;
+@property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, strong) UIBezierPath *linePath;
 
 @end

@@ -28,14 +28,13 @@
 {
     self = [super init];
     if (self) {
-        self.drawingPath = [UIBezierPath bezierPath];
         self.drawLine = [Line new];
+        
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    self.drawingPath = [UIBezierPath bezierPath];
     self.drawLine = [Line new];
 
 }
@@ -43,10 +42,10 @@
 -(void)drawRect:(CGRect)rect {
     
     [self.delegate passLineData];
-    [self.drawingPath moveToPoint:self.drawLine.startPoint];
-    self.drawingPath.lineWidth = 10;
-    [[UIColor purpleColor]setStroke];
-    [self.drawingPath setLineCapStyle:kCGLineCapRound];
+    [self.drawLine.linePath moveToPoint:self.drawLine.startPoint];
+    self.drawLine.linePath.lineWidth = 10;
+    [self.drawLine.lineColor setStroke];
+    [self.drawLine.linePath setLineCapStyle:kCGLineCapRound];
     
     //smoothing:
     if (self.drawLine.linePoints.count >= 4) {
@@ -58,14 +57,14 @@
             NSValue *CP2 = [self.drawLine.linePoints objectAtIndex:((3*i) - 1)];
             CGPoint CGCP2 = CP2.CGPointValue;
             
-            [self.drawingPath addCurveToPoint:CGStart controlPoint1:CGCP1 controlPoint2:CGCP2];
-            [self.drawingPath stroke];
-            [self.drawingPath moveToPoint: CGStart];
+            [self.drawLine.linePath addCurveToPoint:CGStart controlPoint1:CGCP1 controlPoint2:CGCP2];
+            [self.drawLine.linePath stroke];
+            [self.drawLine.linePath moveToPoint: CGStart];
             
         }
     }
     
-    [self.drawingPath stroke];
+    [self.drawLine.linePath stroke];
     
     
     

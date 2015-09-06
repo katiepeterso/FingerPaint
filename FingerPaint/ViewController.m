@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet DrawingView *drawingView;
 @property (strong, nonatomic) Line *currentLine;
+@property (strong, nonatomic) UIColor *lineColor;
 
 @end
 
@@ -23,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.drawingView.delegate = self;
+    self.lineColor = [UIColor purpleColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,6 +34,7 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     self.currentLine = [Line new];
+    self.currentLine.lineColor = self.lineColor;
     UITouch* touch = [touches anyObject];
     self.currentLine.startPoint = [touch locationInView:self.drawingView];
     
@@ -53,8 +56,17 @@
     [self.drawingView setNeedsDisplay];
 }
 
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.currentLine = nil;
+}
+
 -(void)passLineData {
     self.drawingView.drawLine = self.currentLine;
+}
+
+- (IBAction)colorSelected:(UIButton *)sender {
+    
+    self.lineColor = sender.backgroundColor;
 }
 
 @end
